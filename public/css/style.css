@@ -1,0 +1,29 @@
+.row
+{
+    width: 80%;
+    margin: auto;
+}
+.list-menu
+{
+    display: flex;
+    list-style: none;
+}
+.li-menu a
+{
+    text-decoration: none;
+    padding: 20px 30px;
+}
+.main-content
+{
+    width: 50%;
+}
+.title
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-content
+{
+
+}

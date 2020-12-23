@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\TagModel;
 
 class PostModel extends Model
 {
@@ -14,6 +15,6 @@ class PostModel extends Model
 
     public function tag()
     {
-        return $this->belongsTo(Tag::class);
+        return $this->belongsTo(TagModel::class);
     }
 }

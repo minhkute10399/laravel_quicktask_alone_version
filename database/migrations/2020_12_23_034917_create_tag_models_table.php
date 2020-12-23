@@ -16,7 +16,6 @@ class CreateTagModelsTable extends Migration
         Schema::create('tag_models', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('post_id');
             $table->timestamps();
         });
     }
