@@ -17,6 +17,7 @@ class CreatePostModelsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->integer('tag_id');
             $table->timestamps();
         });
     }

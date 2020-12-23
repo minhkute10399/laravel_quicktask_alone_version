@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\PostModel;
 
 class TagModel extends Model
 {
@@ -12,6 +13,6 @@ class TagModel extends Model
 
     public function posts()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(PostModel::class);
     }
 }
