@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TagModel;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -13,7 +14,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $item = TagModel::paginate(5);
+
+        return view('tagIndex', compact('item'));
     }
 
     /**
@@ -23,7 +26,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('createTag');
     }
 
     /**
@@ -34,7 +37,15 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $item = new TagModel();
+        $item->name = $request->name;
+        $item->save();
+
+        return redirect()->route('tag.index');
     }
 
     /**
@@ -56,7 +67,7 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('updateTag');
     }
 
     /**

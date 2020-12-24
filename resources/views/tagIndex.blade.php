@@ -16,10 +16,7 @@
                         <a href="{{ route('post.index') }}">Home</a>
                     </li>
                     <li class="li-menu">
-                        <a href="{{ route('post.create') }}">Create Post</a>
-                    </li>
-                    <li class="li-menu">
-                        <a href="{{ route('tag.index') }}">Tag List</a>
+                        <a href="{{ route('tag.create') }}">Create Tag</a>
                     </li>
                 </ul>
             </div>
@@ -28,22 +25,18 @@
                     <table class="table-content">
                         <tr>
                           <th>STT</th>
-                          <th>Post Name</th>
-                          <th>Description</th>
-                          <th>Tag</th>
+                          <th>Tag Name</th>
                           <th>Action</th>
                         </tr>
                         @foreach ($item as $value)
                         <tr>
                             <td>{{ $loop->index }}</td>
                             <td>{{ $value->name }}</td>
-                            <td>{{ $value->description }}</td>
-                            <td>{{ $value->tag->name }}</td>
                             <td class="btn">
-                                <a href="{{ route('post.edit', $value->id) }}">
+                                <a href="{{ route('tag.edit', $value->id) }}">
                                     <img src="{{ asset('images/edit.png') }}" alt="">
                                 </a>
-                                <form action="{{ route('post.destroy', $value->id) }}" method="POST">
+                                <form action="{{ route('tag.destroy', $value->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                         <button type="submit" class="btn-delete" onclick="return confirm('Want to delete ??')">
