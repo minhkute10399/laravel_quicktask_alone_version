@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::resource('/index', 'PostController');
+Route::resource('/post', 'PostController');
 Route::resource('/tag', 'TagController');

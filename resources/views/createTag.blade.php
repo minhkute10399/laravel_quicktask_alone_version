@@ -16,30 +16,15 @@
                         <a href="{{ route('post.index') }}">Home</a>
                     </li>
                     <li class="li-menu">
-                        <a href="{{ route('post.create') }}">Create Post</a>
-                    </li>
-                    <li class="li-menu">
                         <a href="{{ route('tag.index') }}">Tag List</a>
                     </li>
                 </ul>
             </div>
             <div class="content">
-                <form action="{{ route('post.store') }}" method="POST" class="main-content-create">
+                <form action="{{ route('tag.store') }}" method="POST" class="main-content-create">
                         @csrf
-                        <h2>Post name</h2>
+                        <h2>Tag name</h2>
                         <input type="text" placeholder="Post name ..." name="name">
-                        <h2>Description</h2>
-                        <textarea name="description" id="description" cols="30" rows="10">
-
-                        </textarea>
-                        <h2>Tag</h2>
-                       <div class="select-tag">
-                        <select name="tag_id" id="tag_id">
-                            @foreach ($tag as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                            @endforeach
-                        </select>
-                       </div>
                        <div class="btn-create">
                             <button  type="submit">Add</button>
                        </div>

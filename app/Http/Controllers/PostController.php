@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PostModel;
 use App\Models\TagModel;
+use Validator;
 
 class PostController extends Controller
 {
@@ -27,7 +28,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $tag = TagModel::all();
+
+        return view('create', compact('tag'));
     }
 
     /**
@@ -38,7 +41,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+        $item = new PostModel();
+        $item->name = $request->name;
+        $item->description = $request->description;
+        $item->tag_id = $request->tag_id;
+        $item->save();
+
+        return redirect()->route('post.index');
     }
 
     /**
@@ -60,7 +74,13 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = PostModel::find($id);
+        $tag = TagModel::all();
+
+        return view('update', [
+            'item' => $item,
+            'tag' => $tag,
+        ]);
     }
 
     /**
@@ -72,7 +92,18 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+        $item = PostModel::find($id);
+        $item->name = $request->get('name');
+        $item->description = $request->get('description');
+        $item->tag_id = $request->get('tag_id');
+        $item->save();
+
+        return redirect()->route('post.index');
     }
 
     /**
@@ -83,6 +114,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = PostModel::find($id);
+        $item->delete();
+
+        return redirect()->back();
     }
 }
