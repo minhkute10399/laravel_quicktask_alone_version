@@ -17,5 +17,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::resource('/post', 'PostController');
-Route::resource('/tag', 'TagController');
+Route::group(['middleware' => ['localization']], function () {
+    Route::resource('/post', 'PostController');
+    Route::resource('/tag', 'TagController');
+    Route::get('change-languages/{language}', 'PostController@changeLanguage')->name('change-languages');
+});
