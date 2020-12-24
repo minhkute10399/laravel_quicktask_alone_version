@@ -13,13 +13,19 @@
             <div class="menu">
                 <ul class="list-menu">
                     <li class="li-menu">
-                        <a href="{{ route('post.index') }}">Home</a>
+                        <a href="{{ route('post.index') }}">{{ trans('message.home') }}</a>
                     </li>
                     <li class="li-menu">
-                        <a href="{{ route('post.create') }}">Create Post</a>
+                        <a href="{{ route('post.create') }}">{{ trans('message.create_post') }}</a>
                     </li>
                     <li class="li-menu">
-                        <a href="{{ route('tag.index') }}">Tag List</a>
+                        <a href="{{ route('tag.index') }}">{{ trans('message.tag_list') }}</a>
+                    </li>
+                    <li class="li-menu">
+                        <a href="{{ route('change-languages', ['language' => 'en']) }}">{{ trans('message.english') }}</a>
+                    </li>
+                    <li class="li-menu">
+                        <a href="{{ route('change-languages', ['language' => 'vi']) }}">{{ trans('message.vietnam') }}</a>
                     </li>
                 </ul>
             </div>
@@ -27,11 +33,11 @@
                 <form action="{{ route('post.update', $item->id) }}" method="POST" class="main-content-create">
                         @csrf
                         @method('PUT')
-                        <h2>Post name</h2>
+                        <h2>{{ trans('message.post_name') }}</h2>
                         <input type="text" placeholder="Post name ..." name="name" value="{{ $item->name }}">
-                        <h2>Description</h2>
+                        <h2>{{ trans('message.description') }}</h2>
                         <textarea name="description" id="description" cols="30" rows="10"> {{ $item->description }}</textarea>
-                        <h2>Tag</h2>
+                        <h2>{{ trans('message.tag') }}</h2>
                        <div class="select-tag">
                         <select name="tag_id" id="tag_id">
                             @foreach ($tag as $item)
@@ -40,9 +46,9 @@
                         </select>
                        </div>
                        <div class="btn-create">
-                            <button  type="submit">Update</button>
+                            <button  type="submit">{{ trans('message.update') }}</button>
                        </div>
-            </form>
+                </form>
             </div>
         </div>
     </div>

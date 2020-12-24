@@ -13,13 +13,19 @@
             <div class="menu">
                 <ul class="list-menu">
                     <li class="li-menu">
-                        <a href="{{ route('post.index') }}">Home</a>
+                        <a href="{{ route('post.index') }}">{{ trans('message.home') }}</a>
                     </li>
                     <li class="li-menu">
-                        <a href="{{ route('post.create') }}">Create Post</a>
+                        <a href="{{ route('post.create') }}">{{ trans('message.create_post') }}</a>
                     </li>
                     <li class="li-menu">
-                        <a href="{{ route('tag.index') }}">Tag List</a>
+                        <a href="{{ route('tag.index') }}">{{ trans('message.tag_list') }}</a>
+                    </li>
+                    <li class="li-menu">
+                        <a href="{{ route('change-languages', ['language' => 'en']) }}">{{ trans('message.english') }}</a>
+                    </li>
+                    <li class="li-menu">
+                        <a href="{{ route('change-languages', ['language' => 'vi']) }}">{{ trans('message.vietnam') }}</a>
                     </li>
                 </ul>
             </div>
@@ -27,11 +33,11 @@
                 <div class="main-content">
                     <table class="table-content">
                         <tr>
-                          <th>STT</th>
-                          <th>Post Name</th>
-                          <th>Description</th>
-                          <th>Tag</th>
-                          <th>Action</th>
+                          <th>{{ trans('message.stt') }}</th>
+                          <th>{{ trans('message.post_name') }}</th>
+                          <th>{{ trans('message.description') }}</th>
+                          <th>{{ trans('message.tag') }}</th>
+                          <th>{{ trans('message.action') }}</th>
                         </tr>
                         @foreach ($item as $value)
                         <tr>

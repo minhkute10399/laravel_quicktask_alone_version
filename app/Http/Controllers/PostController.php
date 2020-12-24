@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\PostModel;
 use App\Models\TagModel;
 use Validator;
+use Session;
 
 class PostController extends Controller
 {
@@ -117,6 +118,22 @@ class PostController extends Controller
         $item = PostModel::find($id);
         $item->delete();
 
+        return redirect()->back();
+    }
+
+    public function changeLanguage(Request $request)
+    {
+        $lang = $request->language;
+        $language = config('app.locale');
+
+        if ($lang == 'en') {
+            $language = 'en';
+        }
+        if ($lang == 'vi') {
+            $language = 'vi';
+        }
+
+        Session::put('language', $language);
         return redirect()->back();
     }
 }

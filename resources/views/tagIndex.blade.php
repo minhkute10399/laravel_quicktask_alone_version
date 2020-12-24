@@ -13,10 +13,16 @@
             <div class="menu">
                 <ul class="list-menu">
                     <li class="li-menu">
-                        <a href="{{ route('post.index') }}">Home</a>
+                        <a href="{{ route('post.index') }}">{{ trans('message.home') }}</a>
                     </li>
                     <li class="li-menu">
-                        <a href="{{ route('tag.create') }}">Create Tag</a>
+                        <a href="{{ route('tag.create') }}">{{ trans('message.create_tag') }}</a>
+                    </li>
+                    <li class="li-menu">
+                        <a href="{{ route('change-languages', ['language' => 'en']) }}">{{ trans('message.english') }}</a>
+                    </li>
+                    <li class="li-menu">
+                        <a href="{{ route('change-languages', ['language' => 'vi']) }}">{{ trans('message.vietnam') }}</a>
                     </li>
                 </ul>
             </div>
@@ -24,9 +30,9 @@
                 <div class="main-content">
                     <table class="table-content">
                         <tr>
-                          <th>STT</th>
-                          <th>Tag Name</th>
-                          <th>Action</th>
+                          <th>{{ trans('message.stt') }}</th>
+                          <th>{{ trans('message.tag_name') }}</th>
+                          <th>{{ trans('message.action') }}</th>
                         </tr>
                         @foreach ($item as $value)
                         <tr>
@@ -39,16 +45,15 @@
                                 <form action="{{ route('tag.destroy', $value->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                        <button type="submit" class="btn-delete" onclick="return confirm('Want to delete ??')">
-                                            <img src="{{ asset('images/trash.png') }}" alt="">
-                                        </button>
+                                    <button type="submit" class="btn-delete" onclick="return confirm('Want to delete ??')">
+                                        <img src="{{ asset('images/trash.png') }}" alt="">
+                                    </button>
                                 </form>
                             </td>
                         </tr>
                         @endforeach
-                      </table>
+                    </table>
                 </div>
-            </div>
             </div>
         </div>
     </div>
