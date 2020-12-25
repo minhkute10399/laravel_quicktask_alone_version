@@ -15,4 +15,5 @@ return [
     'vietnam' => 'Tiếng việt',
     'add' => 'Thêm mới',
     'update' => 'Cập nhật',
+    'language' => 'Ngôn ngữ',
 ];
