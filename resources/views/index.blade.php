@@ -127,6 +127,7 @@
                             <td>{{ $value->name }}</td>
                             <td>{{ $value->description }}</td>
                             <td>{{ $value->tag->name }}</td>
+                            @can('view-admin')
                             <td class="btn">
                                 <a href="{{ route('post.edit', $value->id) }}">
                                     <img src="{{ asset('images/edit.png') }}" alt="">
@@ -139,6 +140,8 @@
                                         </button>
                                 </form>
                             </td>
+                            @endcan
+
                         </tr>
                         @endforeach
                       </table>

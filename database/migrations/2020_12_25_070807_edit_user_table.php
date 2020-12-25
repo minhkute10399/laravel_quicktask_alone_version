@@ -14,7 +14,7 @@ class EditUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('role');
+            $table->integer('role')->default(1);
         });
     }
 
