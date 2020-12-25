@@ -15,4 +15,5 @@ return [
     'vietnam' => 'Vietnam',
     'add' => 'Add',
     'update' => 'Update',
+    'language' => 'Language',
 ];

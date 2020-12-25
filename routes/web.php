@@ -22,3 +22,14 @@ Route::group(['middleware' => ['localization']], function () {
     Route::resource('/tag', 'TagController');
     Route::get('change-languages/{language}', 'PostController@changeLanguage')->name('change-languages');
 });
+
+Auth::routes();
+
+// Route::get('/logout', 'PostController@logOut')->name('logout');
+
+
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+
+

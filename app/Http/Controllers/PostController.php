@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PostModel;
 use App\Models\TagModel;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use Session;
 
@@ -15,6 +16,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $item = PostModel::orderBy('created_at', 'desc')->paginate(5);
@@ -132,8 +139,15 @@ class PostController extends Controller
         if ($lang == 'vi') {
             $language = 'vi';
         }
-
         Session::put('language', $language);
+
         return redirect()->back();
+    }
+
+    public function logOut()
+    {
+        Auth::logout();
+
+        return view('auth.login');
     }
 }
